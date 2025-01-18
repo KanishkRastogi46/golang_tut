@@ -12,7 +12,7 @@ type customer struct {
 }
 
 type order struct {
-	id int
+	id int	
 	name string
 	status string
 	orderedAt time.Time
@@ -81,4 +81,14 @@ func main() {
 		customer: newCustomer,
 	}
 	fmt.Println(newOrd)
+
+	orders := []order{
+		{1, "Kanishk", "received", time.Now(), customer{1, "Kanishk", ""}},
+		{2, "Krishna", "shipped", time.Now(), customer{2, "Krishna", ""}},
+	}
+	fmt.Println(orders)
+
+	var myOrder *order = newOrder(3, "Paul", "delivered")
+	orders = append(orders, *myOrder)
+	fmt.Println(orders)
 }

@@ -9,6 +9,11 @@ func swap (a *int, b *int) {
 	*b = temp
 }
 
+func changeVal (x *int) *int {
+	*x = 100
+	return x
+}
+
 func main() {
 	a := 5
 	b := 10
@@ -23,4 +28,18 @@ func main() {
 	ptr2 := &b
 	fmt.Println("Address of a:", ptr1)
 	fmt.Println("Address of b:", ptr2)
+
+	y := 101
+	fmt.Println("y:", y)
+	fmt.Println("Address of x is:",changeVal(&y))
+	fmt.Println("y:", y)
+	
+	x := &y
+	fmt.Println("Address of x is:", x)
+	fmt.Println("Value of x is:", *x)
+	fmt.Println((*x + 1))
+
+	// pointer to pointer
+	var z **int = &x
+	fmt.Println(**z)
 }
