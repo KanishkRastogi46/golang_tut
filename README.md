@@ -1,1 +1,1 @@
-﻿## Golang basics finished now some OOPS and core concepts to learn
+﻿## Golang basics to advanced
