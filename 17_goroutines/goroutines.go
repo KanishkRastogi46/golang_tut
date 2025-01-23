@@ -2,17 +2,22 @@ package main
 
 import (
 	"fmt"
-	"time"
+	"sync"
 )
 
-func task (id int) {
+func task (id int, wg *sync.WaitGroup) {
+	// it will be called when the function ends and removes the task from the wait group
+	defer wg.Done()
 	fmt.Println("dont task", id)
 }
 
 func main() {
+	var wg sync.WaitGroup
 	for i := range 10 {
-		go task(i)
+		// it adds task to the wait group
+		wg.Add(1)
+		go task(i, &wg)
 	}
-
-	time.Sleep(time.Second * 2)
+	// it will wait until all the tasks are done
+	wg.Wait()
 }
